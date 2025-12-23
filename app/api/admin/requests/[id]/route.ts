@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyAdminAuth, createAuthResponse } from '@/lib/auth';
+import type { ConsultationRequest } from '@/types';
 
 // Import the in-memory storage (workaround - use DB in production)
-const getConsultationRequests = async () => {
+const getConsultationRequests = async (): Promise<ConsultationRequest[]> => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/consultation`);
   return response.json();
 };
@@ -19,7 +20,7 @@ export async function GET(
   try {
     const { id } = await params;
     const requests = await getConsultationRequests();
-    const consultationRequest = requests.find((r: any) => r.id === id);
+    const consultationRequest = requests.find((r: ConsultationRequest) => r.id === id);
 
     if (!consultationRequest) {
       return NextResponse.json(
@@ -53,7 +54,7 @@ export async function PATCH(
     const { status, admin_notes } = body;
 
     const requests = await getConsultationRequests();
-    const requestIndex = requests.findIndex((r: any) => r.id === id);
+    const requestIndex = requests.findIndex((r: ConsultationRequest) => r.id === id);
 
     if (requestIndex === -1) {
       return NextResponse.json(

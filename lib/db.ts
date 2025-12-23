@@ -64,7 +64,7 @@ export async function updateConsultationRequest(
   data: Partial<Pick<ConsultationRequest, 'status' | 'admin_notes'>>
 ): Promise<ConsultationRequest> {
   const updates: string[] = [];
-  const values: any[] = [];
+  const values: (string | null)[] = [];
   let paramIndex = 1;
 
   if (data.status !== undefined) {

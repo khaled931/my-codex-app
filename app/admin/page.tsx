@@ -311,6 +311,7 @@ export default function AdminPage() {
                     <label className="text-xs font-semibold text-gray-600 uppercase block mb-2">
                       {t('admin.attachment')}
                     </label>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={selectedRequest.image_url}
                       alt="Attachment"

@@ -4,9 +4,10 @@ import { checkRateLimit } from '@/lib/rate-limit';
 import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { existsSync } from 'fs';
+import type { ConsultationRequest } from '@/types';
 
 // In-memory storage (replace with database in production)
-const consultationRequests: any[] = [];
+const consultationRequests: ConsultationRequest[] = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -63,7 +64,7 @@ export async function POST(request: NextRequest) {
       imageUrl = `/uploads/${fileName}`;
     }
 
-    const consultationRequest = {
+    const consultationRequest: ConsultationRequest = {
       id: uuidv4(),
       created_at: new Date().toISOString(),
       full_name: fullName,
@@ -72,7 +73,7 @@ export async function POST(request: NextRequest) {
       city,
       message: message.trim(),
       image_url: imageUrl,
-      status: 'new',
+      status: 'new' as const,
       admin_notes: null,
     };
 

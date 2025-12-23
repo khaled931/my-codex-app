@@ -44,7 +44,7 @@ export default function AboutPage() {
                   on data and precise scientific analysis.
                 </p>
                 <p className="text-gray-700 leading-relaxed mb-8">
-                  Our vision is to contribute to Syria's energy transition by empowering individuals and
+                  Our vision is to contribute to Syria&apos;s energy transition by empowering individuals and
                   businesses to make informed decisions about renewable energy and sustainability.
                 </p>
               </>
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <p className="text-lg mb-6 opacity-90">
               {language === 'ar'
                 ? 'نحن جاهزون لمساعدتك في تحقيق أهدافك في الطاقة المتجددة والاستدامة'
-                : 'We\'re ready to help you achieve your renewable energy and sustainability goals'}
+                : 'We&apos;re ready to help you achieve your renewable energy and sustainability goals'}
             </p>
             <Link
               href="/submit"
